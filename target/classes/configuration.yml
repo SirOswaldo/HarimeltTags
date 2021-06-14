@@ -1,5 +1,4 @@
 # Storages Available: YAML, MYSQL
-tagsUpdater: 60
 storage: YAML
 mysql:
   ip: ""
@@ -10,13 +9,6 @@ mysql:
   players-table-name: "players"
   tags-table-name: "tags"
 editorInventory:
-  bookInputText:
-    prefix:
-      - "Firme el libro con el nuevo prefix"
-    suffix:
-      - "Firme el libro con el nuevo suffix"
-    rename:
-      - "Firme el libro con el nuevo nombre del tag. Recuerde que el nombre no debe tener espacios."
   title: "Tag Editor"
   items:
     panel:
