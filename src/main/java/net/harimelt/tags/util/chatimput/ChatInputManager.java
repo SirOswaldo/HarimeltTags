@@ -43,8 +43,9 @@ public class ChatInputManager implements Listener {
         Player player = event.getPlayer();
         String name = player.getName();
         if (chatInputs.containsKey(name)) {
+            event.setCancelled(true);
             ChatInput chatInput = chatInputs.get(name);
-            if (!chatInput.onChatInput(player, event.getMessage())) {
+            if (chatInput.onChatInput(player, event.getMessage())) {
                 chatInputs.remove(name);
             }
         }

@@ -18,6 +18,7 @@
 package net.harimelt.tags.inputs;
 
 import net.harimelt.tags.inventories.TagEditInventory;
+import net.harimelt.tags.tasks.OpenInventoryTask;
 import net.harimelt.tags.util.chatimput.ChatInput;
 import org.bukkit.entity.Player;
 import net.harimelt.tags.HarimeltTags;
@@ -44,7 +45,8 @@ public class RenameInput extends ChatInput {
                 tagManager.rename(name, text);
                 harimeltTags.getEditing().put(uuid, new String[] {"MENU", text});
                 TagEditInventory tagEditInventory = new TagEditInventory(harimeltTags);
-                player.openInventory(tagEditInventory.getInventory(text));
+                OpenInventoryTask openInventoryTask = new OpenInventoryTask(harimeltTags, player, tagEditInventory.getInventory(name));
+                openInventoryTask.startScheduler();
             } else {
                 return false;
             }
