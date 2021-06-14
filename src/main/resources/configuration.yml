@@ -1,5 +1,4 @@
 # Storages Available: YAML, MYSQL
-tagsUpdater: 60
 storage: YAML
 mysql:
   ip: ""
