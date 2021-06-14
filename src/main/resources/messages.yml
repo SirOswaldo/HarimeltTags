@@ -16,13 +16,13 @@ EditTag:
   tagNoExist: "%prefix% &fEl tag &2%tag.name%&f no existe."
   menuClose: "%prefix% &fCerraste el menú de edición."
   inputPrefix:
-    - "%prefix% &fFirme el libro con el nuevo prefix."
+    - "%prefix% &fIngrese en el chat el nuevo prefix."
     - "&fSi desea cancelar debe agacharse."
   inputSuffix:
-    - "%prefix% &fFirme el libro con el nuevo suffix."
+    - "%prefix% &fIngrese en el chat el nuevo suffix."
     - "&fSi desea cancelar debe agacharse."
   inputRename:
-    - "%prefix% &fFirme el libro con el nuevo nombre del tag."
+    - "%prefix% &fIngrese en el chat el nuevo nombre del tag."
     - "&fRecuerde que no debe contener espacios."
     - "&fSi desea cancelar debe agacharse."
 ListTags:
