@@ -21,8 +21,11 @@ import net.harimelt.tags.util.mysql.MySQL;
 import net.harimelt.tags.util.task.Task;
 import net.harimelt.tags.HarimeltTags;
 import net.harimelt.tags.tag.Tag;
+import net.harimelt.tags.util.yaml.Yaml;
 
 
+import java.io.File;
+import java.io.FileFilter;
 import java.util.List;
 
 public class LoadAllTagsTask extends Task {
@@ -38,9 +41,7 @@ public class LoadAllTagsTask extends Task {
 
     @Override
     public void actions() {
-        if (tags.isEmpty()) {
-            stopScheduler();
-        } else {
+        if (harimeltTags.getStorageType().equals("MYSQL")) {
             MySQL mySQL = harimeltTags.getTagsMySql();
             mySQL.startConnection();
             for (String tagName:tags) {
@@ -50,7 +51,31 @@ public class LoadAllTagsTask extends Task {
                 harimeltTags.getTagManager().add(tag);
             }
             mySQL.closeConnection();
+        } else {
+            File directory = new File(harimeltTags.getDataFolder() + File.separator + "tags");
+            if (directory.exists()) {
+                File[] files = directory.listFiles(new FileFilter() {
+                    @Override
+                    public boolean accept(File pathname) {
+                        return pathname.getName().endsWith(".yml");
+                    }
+                });
+                if (files != null) {
+                    if (files.length > 0) {
+                        for (File file:files) {
+                            String name = file.getName().replaceAll(".yml", "");
+                            Yaml yaml = new Yaml(harimeltTags, "tags", name);
+                            yaml.registerFileConfiguration();
+                            Tag tag = new Tag(name);
+                            tag.setPrefix(yaml.getString("prefix", ""));
+                            tag.setSuffix(yaml.getString("suffix", ""));
+                            harimeltTags.getTagManager().add(tag);
+                        }
+                    }
+                }
+            }
         }
+        stopScheduler();
     }
 
 }

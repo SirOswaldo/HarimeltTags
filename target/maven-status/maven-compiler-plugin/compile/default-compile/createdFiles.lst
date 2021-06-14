@@ -22,6 +22,7 @@ net\harimelt\tags\inputs\RenameInput.class
 net\harimelt\tags\tag\Tag.class
 net\harimelt\tags\playerdata\PlayerData.class
 net\harimelt\tags\util\mysql\MySQL.class
+net\harimelt\tags\tasks\LoadAllTagsTask$1.class
 net\harimelt\tags\tasks\LoadPlayerDataTask.class
 net\harimelt\tags\tasks\DeleteTagTask.class
 net\harimelt\tags\tasks\LoadAllTagsTask.class

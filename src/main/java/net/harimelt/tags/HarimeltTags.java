@@ -80,6 +80,11 @@ public class HarimeltTags extends JavaPlugin {
         return tagsMySql;
     }
 
+    private String storageType;
+    public String getStorageType() {
+        return storageType;
+    }
+
     @Override
     public void onEnable() {
         // Yaml
@@ -118,7 +123,8 @@ public class HarimeltTags extends JavaPlugin {
     }
 
     public void setupStorage() {
-        if ("MYSQL".equals(configuration.getFileConfiguration().getString("storage"))) {
+        storageType = configuration.getFileConfiguration().getString("storage");
+        if ("MYSQL".equals(storageType)) {
             String ip = configuration.getString("mysql.ip");
             String port = configuration.getString("mysql.port");
             String username = configuration.getString("mysql.username");
